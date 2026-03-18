@@ -29,38 +29,51 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none; z-index: 0; opacity: 0.6;
   }
+
   /* NAV */
   nav { position: fixed; top: 0; width: 100%; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(10,15,30,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
   .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--gold-light); letter-spacing: 0.05em; }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { font-size: 0.73rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--accent2); }
+
   /* HERO */
   .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 5rem; position: relative; overflow: hidden; }
   .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(79,142,247,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(79,142,247,0.04) 1px, transparent 1px); background-size: 60px 60px; }
   .hero-glow { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,247,0.09) 0%, transparent 65%); top: -150px; right: -200px; pointer-events: none; }
   .hero-glow2 { position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%); bottom: 50px; left: -100px; pointer-events: none; }
-  .hero-content { position: relative; z-index: 1; max-width: 860px; }
+  .hero-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 5rem; width: 100%; max-width: 1100px; }
+  .hero-content { flex: 1; }
+  .hero-photo-wrap { flex-shrink: 0; }
+  .hero-photo {
+    width: 240px; height: 240px; border-radius: 50%;
+    object-fit: cover; object-position: center top;
+    border: 3px solid rgba(79,142,247,0.3);
+    box-shadow: 0 0 0 8px rgba(79,142,247,0.06), 0 0 60px rgba(79,142,247,0.15);
+  }
+
   .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.8rem; }
   .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
-  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.2rem, 7vw, 6rem); font-weight: 300; line-height: 1.05; margin-bottom: 0.3rem; letter-spacing: -0.01em; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 300; line-height: 1.05; margin-bottom: 0.3rem; letter-spacing: -0.01em; }
   .hero h1 span { color: var(--accent2); font-weight: 600; }
-  .hero-title { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 2rem; line-height: 1.8; }
-  .hero-summary { font-size: 1.05rem; color: #b0bed4; max-width: 650px; line-height: 1.8; margin-bottom: 2.8rem; }
-  .hero-stats { display: flex; gap: 3rem; margin-bottom: 3rem; flex-wrap: wrap; }
+  .hero-title { font-family: 'DM Mono', monospace; font-size: 0.76rem; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 2rem; line-height: 1.8; }
+  .hero-summary { font-size: 1rem; color: #b0bed4; max-width: 580px; line-height: 1.8; margin-bottom: 2.5rem; }
+  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.8rem; flex-wrap: wrap; }
   .stat { display: flex; flex-direction: column; }
-  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
-  .stat-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
+  .stat-label { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
   .btn-primary { padding: 0.8rem 2rem; background: var(--accent); color: #fff; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: none; cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); }
   .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
   .btn-ghost { padding: 0.8rem 2rem; background: transparent; color: var(--muted); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--border); cursor: pointer; text-decoration: none; transition: all 0.25s; display: inline-block; }
   .btn-ghost:hover { color: var(--accent2); border-color: var(--accent); }
+
   /* SECTION */
   section { padding: 6rem 4rem; position: relative; }
   .section-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
   .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--gold); opacity: 0.5; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; margin-bottom: 3rem; line-height: 1.1; }
+
   /* ABOUT */
   .about { background: var(--deep); }
   .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
@@ -77,6 +90,7 @@
   .contact-val { font-size: 0.9rem; color: var(--text); margin-top: 0.1rem; }
   .contact-val a { color: var(--accent2); text-decoration: none; }
   .contact-val a:hover { text-decoration: underline; }
+
   /* FOCUS */
   .focus { background: var(--navy); }
   .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
@@ -87,6 +101,7 @@
   .focus-icon { font-size: 1.8rem; margin-bottom: 1rem; }
   .focus-title { font-size: 0.9rem; font-weight: 500; color: var(--accent2); margin-bottom: 0.6rem; }
   .focus-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
   /* EXPERTISE */
   .expertise { background: var(--deep); }
   .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
@@ -98,13 +113,13 @@
   .expertise-title { font-size: 0.9rem; font-weight: 500; color: var(--accent2); margin-bottom: 1rem; letter-spacing: 0.05em; }
   .expertise-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .tag { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.05em; padding: 0.25rem 0.6rem; background: rgba(79,142,247,0.08); border: 1px solid rgba(79,142,247,0.2); color: var(--muted); }
+
   /* EXPERIENCE */
   .experience { background: var(--navy); }
   .timeline { position: relative; }
   .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--accent), var(--gold), transparent); }
   .timeline-item { padding-left: 3rem; margin-bottom: 4rem; position: relative; }
   .timeline-dot { position: absolute; left: -6px; top: 8px; width: 13px; height: 13px; border-radius: 50%; background: var(--navy); border: 2px solid var(--accent); }
-  .timeline-dot.gold { border-color: var(--gold); }
   .company-badge { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(79,142,247,0.07); border: 1px solid var(--border); padding: 0.5rem 1rem; margin-bottom: 1.5rem; font-size: 0.8rem; color: var(--accent2); font-weight: 500; letter-spacing: 0.04em; }
   .timeline-meta { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
   .timeline-role { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 600; margin-bottom: 1.2rem; color: var(--text); }
@@ -116,42 +131,80 @@
   .sub-role { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed rgba(100,150,255,0.15); }
   .sub-role-title { font-size: 1rem; font-weight: 500; color: var(--accent2); margin-bottom: 0.25rem; }
   .sub-role-meta { font-family: 'DM Mono', monospace; font-size: 0.67rem; color: var(--muted); margin-bottom: 0.8rem; letter-spacing: 0.08em; }
+
+  /* RECOMMENDATIONS */
+  .recommendations { background: var(--deep); }
+  .rec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+  .rec-card {
+    background: var(--card); border: 1px solid var(--border);
+    padding: 2rem; position: relative; transition: all 0.3s;
+    display: flex; flex-direction: column; gap: 1.2rem;
+  }
+  .rec-card::before { content: '\201C'; position: absolute; top: 1rem; right: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 5rem; line-height: 1; color: rgba(79,142,247,0.1); }
+  .rec-card:hover { border-color: rgba(79,142,247,0.25); transform: translateY(-3px); }
+  .rec-header { display: flex; align-items: flex-start; gap: 1rem; }
+  .rec-avatar {
+    width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: #fff;
+  }
+  .rec-name { font-size: 0.95rem; font-weight: 500; color: var(--text); }
+  .rec-title { font-size: 0.75rem; color: var(--muted); margin-top: 0.15rem; line-height: 1.4; }
+  .rec-relation { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--gold); margin-top: 0.25rem; letter-spacing: 0.06em; }
+  .rec-text { font-size: 0.88rem; color: #8a9bb5; line-height: 1.75; font-style: italic; flex: 1; }
+
   /* CERTIFICATIONS */
-  .certifications { background: var(--deep); }
+  .certifications { background: var(--navy); }
   .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
   .cert-card { background: var(--card); border: 1px solid var(--border); padding: 1.4rem 1.6rem; display: flex; align-items: flex-start; gap: 1rem; transition: all 0.25s; }
   .cert-card:hover { border-color: rgba(201,168,76,0.35); transform: translateY(-2px); }
   .cert-icon { width: 32px; height: 32px; flex-shrink: 0; background: rgba(201,168,76,0.1); border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
   .cert-name { font-size: 0.85rem; color: var(--text); line-height: 1.4; }
   .cert-issuer { font-size: 0.7rem; color: var(--muted); margin-top: 0.2rem; letter-spacing: 0.05em; }
+
   /* METRICS */
-  .metrics { background: var(--navy); }
+  .metrics { background: var(--deep); }
   .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2px; }
   .metric-cell { background: var(--card); padding: 2.5rem 2rem; text-align: center; border: 1px solid var(--border); transition: background 0.3s; }
   .metric-cell:hover { background: rgba(79,142,247,0.05); }
   .metric-val { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 700; color: var(--gold-light); line-height: 1; margin-bottom: 0.5rem; }
   .metric-desc { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; line-height: 1.5; }
+
   /* EDUCATION */
-  .education { background: var(--deep); }
+  .education { background: var(--navy); }
   .edu-grid { display: flex; flex-direction: column; gap: 1.2rem; max-width: 760px; }
   .edu-card { background: var(--card); border: 1px solid var(--border); padding: 1.8rem 2.2rem; display: flex; gap: 2rem; align-items: flex-start; position: relative; }
   .edu-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent), var(--gold)); }
   .edu-year { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--gold); letter-spacing: 0.1em; white-space: nowrap; margin-top: 0.25rem; min-width: 70px; }
   .edu-degree { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 0.25rem; }
   .edu-school { font-size: 0.85rem; color: var(--muted); }
+
   /* FOOTER */
   footer { background: var(--panel); border-top: 1px solid var(--border); padding: 3rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
   .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold-light); }
   .footer-links { display: flex; gap: 2rem; }
   .footer-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--accent2); }
+
   /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   .fade-up { opacity: 0; animation: fadeUp 0.8s forwards; }
   .delay-1 { animation-delay: 0.15s; } .delay-2 { animation-delay: 0.3s; } .delay-3 { animation-delay: 0.45s; } .delay-4 { animation-delay: 0.6s; }
+
   /* RESPONSIVE */
-  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } .focus-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } section { padding: 4rem 1.5rem; } .hero { padding: 7rem 1.5rem 4rem; } .hero-stats { gap: 2rem; } .focus-grid { grid-template-columns: 1fr; } footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; } }
+  @media (max-width: 900px) {
+    .hero-inner { flex-direction: column-reverse; gap: 2.5rem; }
+    .hero-photo { width: 180px; height: 180px; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .focus-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; } .hero { padding: 7rem 1.5rem 4rem; }
+    .hero-stats { gap: 2rem; } .focus-grid { grid-template-columns: 1fr; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+  }
 </style>
 </head>
 <body>
@@ -163,9 +216,9 @@
     <li><a href="#focus">Focus</a></li>
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#recommendations">Recommendations</a></li>
     <li><a href="#certifications">Certifications</a></li>
     <li><a href="#metrics">Impact</a></li>
-    <li><a href="#education">Education</a></li>
   </ul>
 </nav>
 
@@ -174,28 +227,33 @@
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
   <div class="hero-glow2"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow fade-up">Indianapolis, Indiana · Open to New Opportunities</p>
-    <h1 class="fade-up delay-1">Arun Gopal<br/><span>Ayyappan</span></h1>
-    <p class="hero-title fade-up delay-1">
-      IT Service Operations Lead &nbsp;·&nbsp; Google Cloud GenAI Leader<br/>
-      AI Governance &amp; ITSM in Clinical Systems &nbsp;·&nbsp; ServiceNow &nbsp;·&nbsp; Veeva Vault
-    </p>
-    <p class="hero-summary fade-up delay-2">
-      17+ years at the intersection of IT Service Management and Clinical Data Operations — driving
-      the next generation of automated, compliant Clinical IT through AI Governance, Databricks,
-      and ServiceNow Agentic AI. Guided by one belief:
-      <em>Technology should make healthcare faster, safer, and smarter.</em>
-    </p>
-    <div class="hero-stats fade-up delay-3">
-      <div class="stat"><span class="stat-num">17+</span><span class="stat-label">Years Experience</span></div>
-      <div class="stat"><span class="stat-num">98%</span><span class="stat-label">SLA Compliance</span></div>
-      <div class="stat"><span class="stat-num">95%</span><span class="stat-label">CSAT Score</span></div>
-      <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Zero-Finding Audits</span></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-eyebrow fade-up">Indianapolis, Indiana · Open to New Opportunities</p>
+      <h1 class="fade-up delay-1">Arun Gopal<br/><span>Ayyappan</span></h1>
+      <p class="hero-title fade-up delay-1">
+        IT Service Operations Lead &nbsp;·&nbsp; Google Cloud GenAI Leader<br/>
+        AI Governance &amp; ITSM in Clinical Systems &nbsp;·&nbsp; ServiceNow &nbsp;·&nbsp; Veeva Vault
+      </p>
+      <p class="hero-summary fade-up delay-2">
+        17+ years at the intersection of IT Service Management and Clinical Data Operations — driving
+        the next generation of automated, compliant Clinical IT through AI Governance, Databricks,
+        and ServiceNow Agentic AI. Guided by one belief:
+        <em>Technology should make healthcare faster, safer, and smarter.</em>
+      </p>
+      <div class="hero-stats fade-up delay-3">
+        <div class="stat"><span class="stat-num">17+</span><span class="stat-label">Years Experience</span></div>
+        <div class="stat"><span class="stat-num">98%</span><span class="stat-label">SLA Compliance</span></div>
+        <div class="stat"><span class="stat-num">95%</span><span class="stat-label">CSAT Score</span></div>
+        <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Zero-Finding Audits</span></div>
+      </div>
+      <div class="hero-actions fade-up delay-4">
+        <a href="mailto:arungopalayyappan@gmail.com" class="btn-primary">Get In Touch</a>
+        <a href="https://www.linkedin.com/in/arun-gopal-ayyappan-9159b74a/" target="_blank" class="btn-ghost">LinkedIn Profile</a>
+      </div>
     </div>
-    <div class="hero-actions fade-up delay-4">
-      <a href="mailto:arungopalayyappan@gmail.com" class="btn-primary">Get In Touch</a>
-      <a href="https://www.linkedin.com/in/arun-gopal-ayyappan-9159b74a/" target="_blank" class="btn-ghost">LinkedIn Profile</a>
+    <div class="hero-photo-wrap fade-up delay-2">
+      <img src="profile.jpg" alt="Arun Gopal Ayyappan" class="hero-photo"/>
     </div>
   </div>
 </section>
@@ -206,8 +264,8 @@
   <h2 class="section-title">Architect. Operator.<br/>AI Transformation Leader.</h2>
   <div class="about-grid">
     <div class="about-text">
-      <p>For over 8 years, I have lived at the intersection of IT Service Management and Clinical Data Operations, embedded within a major U.S. pharmaceutical organization as part of Tata Consultancy Services. I'm passionate about transforming the "back office" of clinical trials into a strategic engine that accelerates drug development.</p>
-      <p>My career has been focused on one mission: ensuring that the critical systems life sciences companies rely on — from Veeva Vault to custom clinical data warehouses — are not just <em>running</em>, but <em>evolving</em>. I design workflows, architect integrations, and build the resilient platforms that protect clinical data integrity from EDC to regulatory submission.</p>
+      <p>For over 8 years, I have lived at the intersection of IT Service Management and Clinical Data Operations, embedded within a major U.S. pharmaceutical organization (Eli Lilly) as part of Tata Consultancy Services. I'm passionate about transforming the "back office" of clinical trials into a strategic engine that accelerates drug development.</p>
+      <p>My mission: ensuring that the critical systems life sciences companies rely on — from Veeva Vault to custom clinical data warehouses — are not just <em>running</em>, but <em>evolving</em>. I design workflows, architect integrations, and build the resilient platforms that protect clinical data integrity from EDC to regulatory submission.</p>
       <p>Recently certified in AI Governance, Databricks, and ServiceNow Agentic AI, I am aggressively pursuing the application of Generative AI and Agentic Workflows in IT Ops — blending rigorous GxP compliance with the speed of modern AI innovation.</p>
       <div class="philosophy-block">
         <p>"Technology should make healthcare faster, safer, and smarter."</p>
@@ -245,36 +303,12 @@
   <div class="section-label">Mission</div>
   <h2 class="section-title">Where I Make an Impact</h2>
   <div class="focus-grid">
-    <div class="focus-cell">
-      <div class="focus-icon">🔄</div>
-      <div class="focus-title">Reimagining Service Operations</div>
-      <div class="focus-desc">I don't just manage tickets — I design workflows. Deeply focused on ServiceNow and AI-driven automation to predict outages before they happen and streamline critical data flow.</div>
-    </div>
-    <div class="focus-cell">
-      <div class="focus-icon">🧬</div>
-      <div class="focus-title">Clinical Data Flow Architecture</div>
-      <div class="focus-desc">I understand the full journey of clinical data, from EDC to regulatory submission. I build resilient architectures that protect data integrity at every step of the pipeline.</div>
-    </div>
-    <div class="focus-cell">
-      <div class="focus-icon">🤖</div>
-      <div class="focus-title">Future-Ready AI Transformation</div>
-      <div class="focus-desc">Aggressively pursuing Generative AI and Agentic Workflows in IT Ops. The future belongs to organizations that blend rigorous GxP compliance with the speed of modern AI.</div>
-    </div>
-    <div class="focus-cell">
-      <div class="focus-icon">🏗️</div>
-      <div class="focus-title">Enterprise Architecture & Design</div>
-      <div class="focus-desc">Designing scalable, interoperable solutions for clinical and life sciences platforms — translating complex business requirements into elegant technical architectures.</div>
-    </div>
-    <div class="focus-cell">
-      <div class="focus-icon">📋</div>
-      <div class="focus-title">Regulatory & GxP Compliance</div>
-      <div class="focus-desc">Primary point-of-contact for FDA regulatory inspections. Zero audit findings across 5+ inspections. Translating compliance rigor into operational agility at speed.</div>
-    </div>
-    <div class="focus-cell">
-      <div class="focus-icon">☁️</div>
-      <div class="focus-title">Cloud & SaaS Transformation</div>
-      <div class="focus-desc">Driving cloud-native modernization across Azure, AWS, Veeva, and Oracle Cloud. Evaluating emerging technologies for long-term architectural fit and maintainability.</div>
-    </div>
+    <div class="focus-cell"><div class="focus-icon">🔄</div><div class="focus-title">Reimagining Service Operations</div><div class="focus-desc">I don't just manage tickets — I design workflows. Deeply focused on ServiceNow and AI-driven automation to predict outages before they happen and streamline critical data flow.</div></div>
+    <div class="focus-cell"><div class="focus-icon">🧬</div><div class="focus-title">Clinical Data Flow Architecture</div><div class="focus-desc">I understand the full journey of clinical data, from EDC to regulatory submission. I build resilient architectures that protect data integrity at every step of the pipeline.</div></div>
+    <div class="focus-cell"><div class="focus-icon">🤖</div><div class="focus-title">Future-Ready AI Transformation</div><div class="focus-desc">Aggressively pursuing Generative AI and Agentic Workflows in IT Ops. The future belongs to organizations that blend rigorous GxP compliance with the speed of modern AI.</div></div>
+    <div class="focus-cell"><div class="focus-icon">🏗️</div><div class="focus-title">Enterprise Architecture & Design</div><div class="focus-desc">Designing scalable, interoperable solutions for clinical and life sciences platforms — translating complex business requirements into elegant technical architectures.</div></div>
+    <div class="focus-cell"><div class="focus-icon">📋</div><div class="focus-title">Regulatory & GxP Compliance</div><div class="focus-desc">Primary point-of-contact for FDA regulatory inspections. Zero audit findings across 5+ inspections. Translating compliance rigor into operational agility at speed.</div></div>
+    <div class="focus-cell"><div class="focus-icon">☁️</div><div class="focus-title">Cloud & SaaS Transformation</div><div class="focus-desc">Driving cloud-native modernization across Azure, AWS, Veeva, and Oracle Cloud. Evaluating emerging technologies for long-term architectural fit and maintainability.</div></div>
   </div>
 </section>
 
@@ -283,62 +317,14 @@
   <div class="section-label">Core Competencies</div>
   <h2 class="section-title">Areas of Expertise</h2>
   <div class="expertise-grid">
-    <div class="expertise-card">
-      <div class="expertise-num">01</div>
-      <div class="expertise-title">IT Service Operations</div>
-      <div class="expertise-tags">
-        <span class="tag">24x7 Leadership</span><span class="tag">L2/L3 Support</span><span class="tag">Major Incident Mgmt</span><span class="tag">War Room</span><span class="tag">SLA/SLO</span><span class="tag">RCA / CAPA</span><span class="tag">Escalation Mgmt</span>
-      </div>
-    </div>
-    <div class="expertise-card">
-      <div class="expertise-num">02</div>
-      <div class="expertise-title">ServiceNow Platform</div>
-      <div class="expertise-tags">
-        <span class="tag">ITSM</span><span class="tag">ITOM</span><span class="tag">Discovery</span><span class="tag">Service Mapping</span><span class="tag">Event Mgmt</span><span class="tag">CMDB</span><span class="tag">Now Assist AI</span><span class="tag">Agentic Workflows</span><span class="tag">Integration Hub</span>
-      </div>
-    </div>
-    <div class="expertise-card">
-      <div class="expertise-num">03</div>
-      <div class="expertise-title">AI & Generative AI</div>
-      <div class="expertise-tags">
-        <span class="tag">LLM</span><span class="tag">Prompt Engineering</span><span class="tag">Agentic AI</span><span class="tag">AI Governance</span><span class="tag">Google Cloud GenAI</span><span class="tag">Databricks</span><span class="tag">Gen AI for ITOM</span>
-      </div>
-    </div>
-    <div class="expertise-card">
-      <div class="expertise-num">04</div>
-      <div class="expertise-title">SaaS & Cloud Operations</div>
-      <div class="expertise-tags">
-        <span class="tag">Veeva Vault</span><span class="tag">Oracle Cloud</span><span class="tag">Medidata</span><span class="tag">Azure</span><span class="tag">AWS</span><span class="tag">REST/SOAP APIs</span><span class="tag">Release Mgmt</span>
-      </div>
-    </div>
-    <div class="expertise-card">
-      <div class="expertise-num">05</div>
-      <div class="expertise-title">Delivery & Leadership</div>
-      <div class="expertise-tags">
-        <span class="tag">Agile/Scrum</span><span class="tag">QBR Facilitation</span><span class="tag">C-Level Stakeholders</span><span class="tag">Global Teams</span><span class="tag">ITIL</span><span class="tag">Jira / Confluence</span><span class="tag">CAB Governance</span>
-      </div>
-    </div>
-    <div class="expertise-card">
-      <div class="expertise-num">06</div>
-      <div class="expertise-title">Database & Integration Engineering</div>
-      <div class="expertise-tags">
-        <span class="tag">Oracle PL/SQL</span><span class="tag">GoldenGate</span><span class="tag">Control-M</span><span class="tag">UNIX Shell</span><span class="tag">FTP/SFTP</span><span class="tag">MQ Integration</span><span class="tag">IBM Optim</span>
-      </div>
-    </div>
-    <div class="expertise-card">
-      <div class="expertise-num">07</div>
-      <div class="expertise-title">Metrics & Automation</div>
-      <div class="expertise-tags">
-        <span class="tag">Power BI</span><span class="tag">KPI Tracking</span><span class="tag">MTTR / CSAT / FCR</span><span class="tag">AI Workflows</span><span class="tag">Process Optimization</span><span class="tag">Trend Analysis</span>
-      </div>
-    </div>
-    <div class="expertise-card">
-      <div class="expertise-num">08</div>
-      <div class="expertise-title">Compliance & Quality</div>
-      <div class="expertise-tags">
-        <span class="tag">GxP Regulated</span><span class="tag">FDA Inspections</span><span class="tag">GCP (NIDA)</span><span class="tag">SOC 2</span><span class="tag">SDLC Validation</span><span class="tag">Audit Readiness</span>
-      </div>
-    </div>
+    <div class="expertise-card"><div class="expertise-num">01</div><div class="expertise-title">IT Service Operations</div><div class="expertise-tags"><span class="tag">24x7 Leadership</span><span class="tag">L2/L3 Support</span><span class="tag">Major Incident Mgmt</span><span class="tag">War Room</span><span class="tag">SLA/SLO</span><span class="tag">RCA / CAPA</span><span class="tag">Escalation Mgmt</span></div></div>
+    <div class="expertise-card"><div class="expertise-num">02</div><div class="expertise-title">ServiceNow Platform</div><div class="expertise-tags"><span class="tag">ITSM</span><span class="tag">ITOM</span><span class="tag">Discovery</span><span class="tag">Service Mapping</span><span class="tag">Event Mgmt</span><span class="tag">CMDB</span><span class="tag">Now Assist AI</span><span class="tag">Agentic Workflows</span><span class="tag">Integration Hub</span></div></div>
+    <div class="expertise-card"><div class="expertise-num">03</div><div class="expertise-title">AI & Generative AI</div><div class="expertise-tags"><span class="tag">LLM</span><span class="tag">Prompt Engineering</span><span class="tag">Agentic AI</span><span class="tag">AI Governance</span><span class="tag">Google Cloud GenAI</span><span class="tag">Databricks</span><span class="tag">Gen AI for ITOM</span></div></div>
+    <div class="expertise-card"><div class="expertise-num">04</div><div class="expertise-title">SaaS & Cloud Operations</div><div class="expertise-tags"><span class="tag">Veeva Vault</span><span class="tag">Oracle Cloud</span><span class="tag">Medidata</span><span class="tag">Azure</span><span class="tag">AWS</span><span class="tag">REST/SOAP APIs</span><span class="tag">Release Mgmt</span></div></div>
+    <div class="expertise-card"><div class="expertise-num">05</div><div class="expertise-title">Delivery & Leadership</div><div class="expertise-tags"><span class="tag">Agile/Scrum</span><span class="tag">QBR Facilitation</span><span class="tag">C-Level Stakeholders</span><span class="tag">Global Teams</span><span class="tag">ITIL</span><span class="tag">Jira / Confluence</span><span class="tag">CAB Governance</span></div></div>
+    <div class="expertise-card"><div class="expertise-num">06</div><div class="expertise-title">Database & Integration Engineering</div><div class="expertise-tags"><span class="tag">Oracle PL/SQL</span><span class="tag">GoldenGate</span><span class="tag">Control-M</span><span class="tag">UNIX Shell</span><span class="tag">FTP/SFTP</span><span class="tag">MQ Integration</span><span class="tag">IBM Optim</span></div></div>
+    <div class="expertise-card"><div class="expertise-num">07</div><div class="expertise-title">Metrics & Automation</div><div class="expertise-tags"><span class="tag">Power BI</span><span class="tag">KPI Tracking</span><span class="tag">MTTR / CSAT / FCR</span><span class="tag">AI Workflows</span><span class="tag">Process Optimization</span><span class="tag">Trend Analysis</span></div></div>
+    <div class="expertise-card"><div class="expertise-num">08</div><div class="expertise-title">Compliance & Quality</div><div class="expertise-tags"><span class="tag">GxP Regulated</span><span class="tag">FDA Inspections</span><span class="tag">GCP (NIDA)</span><span class="tag">SOC 2</span><span class="tag">SDLC Validation</span><span class="tag">Audit Readiness</span></div></div>
   </div>
 </section>
 
@@ -350,9 +336,8 @@
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="company-badge">🏢 Tata Consultancy Services (TCS) &nbsp;·&nbsp; Oct 2008 – Jan 2026 &nbsp;·&nbsp; 17+ Years</div>
-
       <div class="timeline-meta">Apr 2017 – Jan 2026 · Indianapolis, USA</div>
-      <div class="timeline-role">Application Architect / IT Service Operations Lead<small>Clinical Results Systems – Major U.S. Pharmaceutical Organization</small></div>
+      <div class="timeline-role">Application Architect / IT Service Operations Lead<small>Clinical Results Systems – Eli Lilly and Company</small></div>
       <ul class="timeline-highlights">
         <li>Designed technical architectures for clinical and enterprise systems, ensuring <strong>scalability, performance, and GxP compliance</strong> for Veeva Vault, Oracle Cloud, and Medidata platforms.</li>
         <li>Led global <strong>24x7 support operations</strong>, managing P1/P2 escalations and war-rooms with <strong>98%+ SLA compliance</strong> and &lt;4-hour MTTR across multiple time zones.</li>
@@ -361,46 +346,161 @@
         <li>Defined and tracked critical KPIs driving initiatives that <strong>reduced repeat incidents by 28%</strong> and materially improved platform stability.</li>
         <li>Delivered <strong>15+ major platform upgrades with zero unplanned downtime</strong> through rigorous UAT, release management, and operational handover processes.</li>
         <li>Established IT/Quality compliance programs as primary FDA contact — achieving <strong>zero audit findings across 5+ regulatory inspections</strong> in GxP-regulated environment.</li>
-        <li>Translated complex business and functional requirements into architecture diagrams, data flows, and integration models; evaluated new tools for long-term architectural alignment.</li>
       </ul>
-
       <div class="sub-role">
         <div class="sub-role-title">Database Technical Lead / Application Implementation Manager</div>
         <div class="sub-role-meta">Jan 2015 – Dec 2016 · Cochin, India · Global Fortune 500 Financial Services</div>
         <ul class="timeline-highlights">
-          <li>Managed enterprise application releases and infrastructure upgrades, overseeing <strong>CAB governance</strong>, release calendar, deployment planning, and technical risk assessment.</li>
+          <li>Managed enterprise application releases and infrastructure upgrades, overseeing <strong>CAB governance</strong>, release calendar, and technical risk assessment across multiple programs.</li>
           <li>Designed Oracle PL/SQL database solutions; developed GoldenGate replication, Control-M scheduling, UNIX shell scripts, and MQ/FTP integrations.</li>
-          <li>Led L2/L3 incident resolution via ServiceNow, performed root-cause analysis, and drove automation initiatives reducing manual effort and improving reliability.</li>
-          <li>Coordinated onshore/offshore technical teams, managed defect resolution, and executed unit, integration, and system-level testing using IBM Optim.</li>
+          <li>Led L2/L3 incident resolution via ServiceNow, performed root-cause analysis, and drove automation initiatives reducing manual effort.</li>
         </ul>
       </div>
-
-      <div class="sub-role">
-        <div class="sub-role-title">Application Support Lead</div>
-        <div class="sub-role-meta">Oct 2013 – Dec 2014 · Kochi, India</div>
-        <ul class="timeline-highlights">
-          <li>Monitored and supported critical HAT services, maintained SLAs, conducted root-cause analysis, and contributed to preventive maintenance policies and operational efficiency improvements.</li>
-          <li>Tracked system performance, identified capacity risks, and implemented stability measures; assessed major changes for operational readiness.</li>
-        </ul>
-      </div>
-
       <div class="sub-role">
         <div class="sub-role-title">Application Support Lead / Production Release Manager</div>
         <div class="sub-role-meta">Jun 2010 – Oct 2013 · Kochi, India</div>
         <ul class="timeline-highlights">
-          <li>Assessed technical and functional impacts of upcoming changes; validated requirements and prepared support documentation for new/updated system features.</li>
+          <li>Assessed technical and functional impacts of system changes; validated requirements and coordinated deployment with business and engineering teams.</li>
           <li>Developed PL/SQL and UNIX scripts for release execution; managed UAT readiness, release risks, and post-deployment corrective actions.</li>
         </ul>
       </div>
-
       <div class="sub-role">
-        <div class="sub-role-title">Database Developer / Support Lead → Application Developer → Trainee</div>
+        <div class="sub-role-title">Database Developer / Application Developer → Trainee</div>
         <div class="sub-role-meta">Oct 2008 – May 2010 · Bengaluru, India</div>
         <ul class="timeline-highlights">
           <li>Early-career foundation in database development, functional/technical testing, stored procedures, unit test planning, and production deployment support for global financial services clients.</li>
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="recommendations" id="recommendations">
+  <div class="section-label">Testimonials</div>
+  <h2 class="section-title">What Colleagues Say</h2>
+  <div class="rec-grid">
+
+    <div class="rec-card">
+      <div class="rec-header">
+        <div class="rec-avatar">W</div>
+        <div>
+          <div class="rec-name">Wendy Huber</div>
+          <div class="rec-title">Director, Eli Lilly and Company</div>
+          <div class="rec-relation">Client · Jan 2026</div>
+        </div>
+      </div>
+      <p class="rec-text">"Arun Gopal Ayyappan's impact as IT Service Operations Lead for Clinical Results Systems at Lilly has proven exceptional over the course of many years. Arun is widely recognized as the go-to person for complex clinical IT issues, and his leadership has been critical to the stability, compliance, and success of our clinical systems operations. Arun consistently delivers 98%+ SLA performance across ITSM processes."</p>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-header">
+        <div class="rec-avatar">J</div>
+        <div>
+          <div class="rec-name">Joseph Jones</div>
+          <div class="rec-title">Director, Eli Lilly and Company</div>
+          <div class="rec-relation">Client · Jan 2026</div>
+        </div>
+      </div>
+      <p class="rec-text">"I have had the absolute and distinct honor of working with Arun for nearly a decade. He has excelled at learning not only the systems he has supported, but most importantly, he has become as knowledgeable as most business subject experts on the business processes and industry norms. He has a unique ability to quickly learn and understand internal quality processes as well as industry and regulatory guidelines — quickly becoming the go-to person in all situations."</p>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-header">
+        <div class="rec-avatar">S</div>
+        <div>
+          <div class="rec-name">Sharon Klein</div>
+          <div class="rec-title">Senior Director, Clinical Results Systems, Eli Lilly</div>
+          <div class="rec-relation">Colleague · Jan 2026</div>
+        </div>
+      </div>
+      <p class="rec-text">"Time and time again Arun has showed an outstanding understanding of processes, validation and support of the Business. Arun has assisted with many urgent issues and has had excellent communication skills while driving issues to resolution. He is reliable, knowledgeable and the go-to person to lead a team. Arun is an overall team player and will drive any team to excellence."</p>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-header">
+        <div class="rec-avatar">R</div>
+        <div>
+          <div class="rec-name">Rex Sohn, A-CSM®, CSPO®</div>
+          <div class="rec-title">Manager – IT Operations, Clinical Results Delivery, Lilly Research Labs</div>
+          <div class="rec-relation">Same Team · Jan 2026</div>
+        </div>
+      </div>
+      <p class="rec-text">"I had the privilege of working with Arun for three years in Clinical Trial Data Management Systems Operations, where he consistently proved to be an exceptional partner to the business. His deep expertise in ServiceNow and clinical platforms enabled him not only to resolve complex technical issues but also to drive meaningful operational improvements. Arun handles critical situations with a level of responsiveness, ownership, and customer focus that set a benchmark for my entire team."</p>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-header">
+        <div class="rec-avatar">N</div>
+        <div>
+          <div class="rec-name">Nick Kaleta</div>
+          <div class="rec-title">COO & Co-Founder | Driving Growth, Strategy, and Operational Excellence</div>
+          <div class="rec-relation">Same Team · Feb 2026</div>
+        </div>
+      </div>
+      <p class="rec-text">"I've had the pleasure of working with Arun, and he's someone I'd recommend without hesitation. He consistently brings strong leadership and solid judgment to everything he does with a genuine commitment to both his team and the customer experience. One of Arun's real strengths is breaking down complex topics into something everyone can understand and act on — it's a skill that makes him incredibly effective at bringing together people with different technical backgrounds. He has a calm, solutions-oriented way of working."</p>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-header">
+        <div class="rec-avatar">R</div>
+        <div>
+          <div class="rec-name">Ratheesh Nair</div>
+          <div class="rec-title">Associate Director, Platform Management</div>
+          <div class="rec-relation">Vendor Partner · Jan 2026</div>
+        </div>
+      </div>
+      <p class="rec-text">"I was consistently impressed by his passion for what he does and his deep commitment to his team and to the patients. Arun combines strong domain knowledge with a genuine sense of purpose. He clearly understands how critical GxP systems are to patient safety and regulatory compliance, and he approaches every decision with that bigger mission in mind."</p>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-header">
+        <div class="rec-avatar">B</div>
+        <div>
+          <div class="rec-name">Brian O'Shea</div>
+          <div class="rec-title">Senior Consultant, Veeva Systems</div>
+          <div class="rec-relation">Cross-Company · Jan 2026</div>
+        </div>
+      </div>
+      <p class="rec-text">"Arun has been a pleasure to work with. He is hard working and very responsive. Arun consistently thinks critically when dealing with complex problems and always puts his teams in the best position to succeed. I am confident that Arun will continue to be successful in any role he undertakes as he poses the technical and personal skills to adapt to a multitude of situations."</p>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-header">
+        <div class="rec-avatar">J</div>
+        <div>
+          <div class="rec-name">Julie Geeting</div>
+          <div class="rec-title">Associate Director – Clinical Trial Foundations, Clinical Results Systems</div>
+          <div class="rec-relation">Same Team · Dec 2025</div>
+        </div>
+      </div>
+      <p class="rec-text">"Arun Gopal Ayyappan's depth of expertise has consistently impressed me. His strong analytical approach, versatility across agile and waterfall methodologies, and commitment to high-quality project execution reflect a level of mastery and reliability that is increasingly rare."</p>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-header">
+        <div class="rec-avatar">Re</div>
+        <div>
+          <div class="rec-name">Reshmi Nair</div>
+          <div class="rec-title">Staff Engineer | TOGAF | Solution Designer | WorkFlow Engineering</div>
+          <div class="rec-relation">Senior Colleague · Feb 2026</div>
+        </div>
+      </div>
+      <p class="rec-text">"I had the pleasure of working with Arungopal Ayyapan and can confidently say he is someone who brings both capability and positivity to any team. What truly stands out about Arungopal is his strong learning mindset — he is quick to grasp new concepts, open to feedback, and consistently looks for ways to improve and grow. His cheerful enthusiasm makes him a joy to collaborate with."</p>
+    </div>
+
+    <div class="rec-card">
+      <div class="rec-header">
+        <div class="rec-avatar">So</div>
+        <div>
+          <div class="rec-name">Sobin Joy</div>
+          <div class="rec-title">Portfolio / Program Delivery Leader, Westpac Group | SAFe Agilist, POPM, CSM, ITIL</div>
+          <div class="rec-relation">Direct Manager · Dec 2025</div>
+        </div>
+      </div>
+      <p class="rec-text">"Arun Gopal Ayyappan is one of the most efficacious persons I have met in my life. We worked closely together in many data migration projects, new domain/feature delivery initiatives and transformation objectives for TCS–American Express. I was consistently impressed with Arun's ability to deliver quality technical solutions considering the customer outcomes and expectations — providing meaningful and pragmatic data insights, value-oriented solutions and technology foundations."</p>
+    </div>
+
   </div>
 </section>
 
@@ -444,22 +544,12 @@
   <div class="section-label">Education</div>
   <h2 class="section-title">Academic Background</h2>
   <div class="edu-grid">
-    <div class="edu-card">
-      <div class="edu-year">2011–2013</div>
-      <div><div class="edu-degree">M.S., Software Systems</div><div class="edu-school">Birla Institute of Technology and Science, Pilani (BITS Pilani)</div></div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-year">2004–2008</div>
-      <div><div class="edu-degree">B.Tech., Electrical, Electronics &amp; Communications Engineering</div><div class="edu-school">SCT College of Engineering</div></div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-year">2004</div>
-      <div><div class="edu-degree">High School Diploma</div><div class="edu-school">Loyola School, Sreekariyam, Trivandrum</div></div>
-    </div>
+    <div class="edu-card"><div class="edu-year">2011–2013</div><div><div class="edu-degree">M.S., Software Systems</div><div class="edu-school">Birla Institute of Technology and Science, Pilani (BITS Pilani)</div></div></div>
+    <div class="edu-card"><div class="edu-year">2004–2008</div><div><div class="edu-degree">B.Tech., Electrical, Electronics &amp; Communications Engineering</div><div class="edu-school">SCT College of Engineering</div></div></div>
+    <div class="edu-card"><div class="edu-year">2004</div><div><div class="edu-degree">High School Diploma</div><div class="edu-school">Loyola School, Sreekariyam, Trivandrum</div></div></div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-name">Arun Gopal Ayyappan</div>
   <div class="footer-links">
